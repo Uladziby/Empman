@@ -23,9 +23,11 @@
 
 
 .card{
+    padding: 1%;
     position: relative;
-    width: 300px;
-    height: 300px; 
+    width: 350px;
+    height: 300px;
+    box-sizing: border-box;
     transform-style: preserve-3d; 
     transform-origin: right;
     transition: transform .5s;
@@ -50,7 +52,7 @@
     } 
 
     &__front{
-        background-color: lightcoral;
+       
         
     }
 

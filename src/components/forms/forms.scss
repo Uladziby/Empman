@@ -1,0 +1,20 @@
+.form{
+    padding: 3%;
+    &>.btn{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+    }
+    &>.htmlForm-group{
+        width: 100%;
+        &>input{
+            width: 100%;
+        }
+    }
+}
+
+.htmlForm-group{
+    padding-bottom: 2rem;
+}
+
