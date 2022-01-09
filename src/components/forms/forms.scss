@@ -11,10 +11,16 @@
         &>input{
             width: 100%;
         }
+        &>input:focus{
+            width: 100%;
+            color: #007bff;
+        }
     }
+    
+
 }
 
 .htmlForm-group{
-    padding-bottom: 2rem;
+    padding-bottom: 1rem;
 }
 

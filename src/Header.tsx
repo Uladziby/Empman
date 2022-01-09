@@ -1,22 +1,21 @@
 import { Constants } from "common/constants";
-import React, { SyntheticEvent } from "react";
+import React, { SyntheticEvent, useEffect } from "react";
 import { Button, Navbar, Container, Nav } from "react-bootstrap";
-import { useDispatch } from "react-redux";
-import { changeLogonType } from "redux/actions";
+import { useDispatch} from "react-redux";
+import { ActionChangeLogonType } from "redux/actions";
 
 export const Header: React.FC = () => {
   const dispatch = useDispatch();
-  
   function handleShow(e: SyntheticEvent) {
     let target = e.target as HTMLElement;
     switch (target.textContent) {
       case "Log In":
-        dispatch(changeLogonType(Constants.SHOW_SIGNUP))
+        dispatch(ActionChangeLogonType(Constants.SHOW_LOGIN));
         console.log(target.textContent);
 
         break;
       case "Sign Up":
-        dispatch(changeLogonType(Constants.SHOW_LOGIN))
+        dispatch(ActionChangeLogonType(Constants.SHOW_SIGNUP));
         console.log(target.textContent);
 
         break;
@@ -24,7 +23,6 @@ export const Header: React.FC = () => {
         break;
     }
   }
-//в зависимости от нажатия изменять класс нужен ли юз эфект при юз селекторе
 
   return (
     <>

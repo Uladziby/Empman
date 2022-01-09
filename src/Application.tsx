@@ -4,15 +4,19 @@ import "./App.css";
 import { Button, Navbar } from "react-bootstrap";
 import { Header } from "Header";
 import { Footer } from "Footer";
-import { StartPage } from "Pages/StartPage";
+import { AuthPage } from "Pages/AuthPage";
+import { BrowserRouter } from "react-router-dom";
+import { getAllUsers } from "common/api";
 
 const Application: React.FC = () => {
+
+
   return (
-    <>
+    <BrowserRouter>
       <Header />
-      <StartPage />
+      <AuthPage />
       <Footer />
-    </>
+    </BrowserRouter>
   );
 };
 
