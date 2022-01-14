@@ -1,12 +1,14 @@
 import { Constants } from "./constants";
 export interface IStore {
   start: IStartPage;
+  main:IMainPage;
+  isLoading: boolean;
 }
 
 export interface IStartPage {
   TypeLogon: Constants.SHOW_LOGIN | Constants.SHOW_SIGNUP;
   user: IUserData[];
-  isLogin : boolean;
+  isLogin: boolean;
 }
 export interface IDataLogIn {
   email: string;
@@ -19,4 +21,19 @@ export interface IUserData {
   lastName: string;
   email: string;
   password: string;
+}
+export interface IEmployee{
+  firstName : string;
+  lastName : string;
+  age: number;
+  dataFrom: string;
+  position : string;
+  freeDays : number;
+  phone : string;
+  skills : string[];
+}
+
+export interface IMainPage {
+  Employees : IEmployee[]
+
 }

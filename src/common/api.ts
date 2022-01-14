@@ -4,6 +4,7 @@ import { IDataLogIn } from "./interfaces";
 const urlBase = "http://localhost:4040";
 const mainUrl = `${urlBase}/main`;
 const login = `${urlBase}/login`;
+const AllEmp = `${urlBase}/main/emp`
 
 
 
@@ -19,4 +20,8 @@ export async function checkLogIn(data : IDataLogIn):Promise<AxiosResponse| undef
     console.log(e, "ups")
   }
   
+}
+
+export async function getAllEmployees(): Promise<AxiosResponse>{
+  return await axios(AllEmp)
 }

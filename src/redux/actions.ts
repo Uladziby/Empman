@@ -1,16 +1,9 @@
 import { IUserData } from "./../common/interfaces";
-import { Constants } from "./../common/constants";
+import { Actions, Constants } from "./../common/constants";
 
 import { IStartPage } from "common/interfaces";
-import { stat } from "fs";
 
-export enum Actions {
-  CHANGE_LOGON_TYPE = "CHANGE_LOGON_TYPE",
-  CREATE_NEW_USER = "CREATE_NEW_USER",
-  ENTER_USER = "ENTER_USER",
-  GET_USERS = "GET_USERS",
-  IS_LOGIN = "IS_LOGIN",
-}
+
 //TYPES
 export type TypeLogonType = {
   type: typeof Actions.CHANGE_LOGON_TYPE;

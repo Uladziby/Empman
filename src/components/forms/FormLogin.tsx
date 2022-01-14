@@ -2,10 +2,12 @@ import "./forms.scss";
 import { useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
 import { Loader } from "common/loader";
-import { checkLogInThunks, getUsers } from "redux/thunks";
-import { check } from "prettier";
-import { checkLogIn } from "common/api";
+import { checkLogInThunks, getAllEmpThunks, getUsers } from "redux/thunks";
+;
 import { IDataLogIn } from "common/interfaces";
+import { ActionLoader } from "redux/ReducerLoader";
+import { Redirect, useHistory } from "react-router-dom";
+import { getAllEmployees } from "common/api";
 
 export const FormLogin: React.FC = () => {
   const {
@@ -19,16 +21,24 @@ export const FormLogin: React.FC = () => {
     },
   });
   const dispatch = useDispatch();
+  const history = useHistory()
 
+
+  
   return (
     <>
       <form
         className="form"
-        onSubmit={handleSubmit((data : IDataLogIn) => {
-          console.log(data);
-          dispatch(checkLogInThunks(data))
-          //dispatch(getUsers());
-        })}
+        onSubmit={handleSubmit((data: IDataLogIn) => {
+          
+          dispatch(ActionLoader(true));
+          dispatch(checkLogInThunks(data));
+          setTimeout(() => {
+            history.push("/main")
+            dispatch(getAllEmpThunks())
+            dispatch(ActionLoader(false));
+          }, 3000);
+           })}
       >
         <h3>Log in</h3>
         <div className="htmlForm-group">
@@ -62,7 +72,6 @@ export const FormLogin: React.FC = () => {
           Submit
         </button>
       </form>
-      <Loader />
     </>
   );
 };

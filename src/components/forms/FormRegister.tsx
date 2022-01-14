@@ -46,7 +46,7 @@ export const FormRegister: React.FC = () => {
             {...register("email", { required: true })}
             type="email"
             className="htmlForm-control"
-            id="exampleInputEmail1"
+            id="exampleInputEmail1 1"
             aria-describedby="emailHelp"
             placeholder="Enter email"
           />
@@ -63,7 +63,7 @@ export const FormRegister: React.FC = () => {
             })}
             type="password"
             className="htmlForm-control"
-            id="exampleInputPassword1"
+            id="exampleInputPassword1 1"
             placeholder="Password"
           />
         </div>

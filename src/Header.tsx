@@ -1,36 +1,43 @@
 import { Constants } from "common/constants";
+import { Loader } from "common/loader";
 import React, { SyntheticEvent, useEffect } from "react";
 import { Button, Navbar, Container, Nav } from "react-bootstrap";
-import { useDispatch} from "react-redux";
+import { useDispatch } from "react-redux";
+import { Link, useHistory } from "react-router-dom";
 import { ActionChangeLogonType } from "redux/actions";
 
 export const Header: React.FC = () => {
   const dispatch = useDispatch();
+  const history = useHistory();
+  
   function handleShow(e: SyntheticEvent) {
     let target = e.target as HTMLElement;
     switch (target.textContent) {
       case "Log In":
         dispatch(ActionChangeLogonType(Constants.SHOW_LOGIN));
-        console.log(target.textContent);
-
         break;
       case "Sign Up":
         dispatch(ActionChangeLogonType(Constants.SHOW_SIGNUP));
-        console.log(target.textContent);
-
         break;
       default:
         break;
     }
   }
 
+  const handler = () => {
+    history.push("/main");
+  };
+
   return (
     <>
       <Navbar bg="dark" variant="dark">
         <Container>
-          <Navbar.Brand href="#home">Empman</Navbar.Brand>
+          <Loader />
+          <Navbar.Brand href="/" onClick={handler}>
+            Empman
+          </Navbar.Brand>
           <Nav className="me-auto">
-            <Nav.Link href="#home">Home</Nav.Link>
+            <Nav.Link>Home</Nav.Link>
           </Nav>
           <Nav>
             <Button variant="warning" className="m-2" onClick={(e: SyntheticEvent) => handleShow(e)}>

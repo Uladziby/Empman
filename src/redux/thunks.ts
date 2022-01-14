@@ -1,7 +1,8 @@
 import { IDataLogIn } from "./../common/interfaces";
 import { AxiosResponse } from "axios";
-import { checkLogIn, getAllUsers } from "common/api";
-import { Actions } from "./actions";
+import { checkLogIn, getAllEmployees, getAllUsers } from "common/api";
+import { Actions } from "common/constants";
+
 
 export const getUsers = () => {
   return (dispatch: (arg0: { type: string; payload: AxiosResponse<any> }) => void) => {
@@ -22,9 +23,24 @@ GetAllUser запрашивает на сервере данные
 export const checkLogInThunks = (data: IDataLogIn) => {
   return (dispatch: any) => {
     checkLogIn(data).then((answ) => {
+      setTimeout(() => {
+        dispatch({
+          type: Actions.IS_LOGIN,
+          payload: answ!.data,
+        });
+      }, 2000);
+    });
+  };
+};
+
+
+export const getAllEmpThunks = () => {
+  return (dispatch: (arg0: { type: string; payload: AxiosResponse<any> }) => void) => {
+    getAllEmployees().then((users) => {
+
       dispatch({
-        type: Actions.IS_LOGIN,
-        payload: answ!.data,
+        type: Actions.GET_ALL_EMP,
+        payload: users.data,
       });
     });
   };

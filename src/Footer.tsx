@@ -4,7 +4,7 @@ export const Footer: React.FC = () => {
   return (
     <footer className="bg-dark text-center text-white">
       <div className="container p-4">
-        <section className="">
+        <section className="footer_section">
           <form action="">
             <div className="row d-flex justify-content-center">
               <div className="col-auto">
