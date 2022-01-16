@@ -1,3 +1,4 @@
+import { deleteEmp } from 'common/api';
 import { Constants } from "./constants";
 export interface IStore {
   start: IStartPage;
@@ -23,6 +24,7 @@ export interface IUserData {
   password: string;
 }
 export interface IEmployee{
+  id: string;
   firstName : string;
   lastName : string;
   age: number;
@@ -34,6 +36,7 @@ export interface IEmployee{
 }
 
 export interface IMainPage {
-  Employees : IEmployee[]
+  Employees : IEmployee[];
+  deleteEmp : string;
 
 }

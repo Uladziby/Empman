@@ -36,4 +36,3 @@ export const MainPage: React.FC = () => {
     </div>
   );
 };
-//Create My Teams with Cards

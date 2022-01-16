@@ -4,7 +4,7 @@ import { IDataLogIn } from "./interfaces";
 const urlBase = "http://localhost:4040";
 const mainUrl = `${urlBase}/main`;
 const login = `${urlBase}/login`;
-const AllEmp = `${urlBase}/main/emp`
+const employees = `${urlBase}/main/emp`;
 
 
 
@@ -23,5 +23,14 @@ export async function checkLogIn(data : IDataLogIn):Promise<AxiosResponse| undef
 }
 
 export async function getAllEmployees(): Promise<AxiosResponse>{
-  return await axios(AllEmp)
+  return await axios(employees)
+}
+
+export async function deleteEmp(id : string): Promise<AxiosResponse|undefined>{
+  try {
+    return await axios.delete(`${employees}/:${id}`)
+  } catch (error) {
+    console.log(error, "delete")
+
+  }
 }

@@ -1,8 +1,8 @@
+import { IEmployee } from 'common/interfaces';
 import { IDataLogIn } from "./../common/interfaces";
 import { AxiosResponse } from "axios";
-import { checkLogIn, getAllEmployees, getAllUsers } from "common/api";
+import { checkLogIn, deleteEmp, getAllEmployees, getAllUsers } from "common/api";
 import { Actions } from "common/constants";
-
 
 export const getUsers = () => {
   return (dispatch: (arg0: { type: string; payload: AxiosResponse<any> }) => void) => {
@@ -33,11 +33,9 @@ export const checkLogInThunks = (data: IDataLogIn) => {
   };
 };
 
-
 export const getAllEmpThunks = () => {
   return (dispatch: (arg0: { type: string; payload: AxiosResponse<any> }) => void) => {
     getAllEmployees().then((users) => {
-
       dispatch({
         type: Actions.GET_ALL_EMP,
         payload: users.data,
@@ -45,3 +43,15 @@ export const getAllEmpThunks = () => {
     });
   };
 };
+
+export const deleteEmpThunks = (id: string) => {
+  return (dispatch: (arg0: { type: string; payload: AxiosResponse<IEmployee[]> }) => void) => {
+    deleteEmp(id).then((res)=>{
+      dispatch({
+        type: Actions.DEL_EMP,
+        payload : res?.data,
+      })
+    })
+  };
+};
+//
