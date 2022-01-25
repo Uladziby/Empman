@@ -26,7 +26,10 @@ export type TypeIsLogin ={
   type : typeof Actions.IS_LOGIN,
   payload : boolean,
 }
-
+export type TypeLogOut ={
+  type : typeof Actions.LOG_OUT,
+  payload : boolean,
+}
 //ACTIONS
 
 export const ActionGetUsers = (data: IUserData[]): TypeGetUsers => ({
@@ -47,6 +50,10 @@ export const ActionIsLogin = (data : boolean): TypeIsLogin =>({
   type : Actions.IS_LOGIN,
   payload : data,
 })
+export const ActionLogout = (data : boolean): TypeLogOut =>({
+  type : Actions.LOG_OUT,
+  payload : data,
+})
 /* 
  write dispatch => new constant =>create new Type => 
  create Action(func in reducer) =>
@@ -61,7 +68,7 @@ export const initialStateStartPage: IStartPage = {
   isLogin: false,
 };
 
-export type TypesStartPage = TypeCreateNewUser | TypeLogonType| TypeGetUsers | TypeIsLogin ;
+export type TypesStartPage = TypeCreateNewUser | TypeLogonType| TypeGetUsers | TypeIsLogin | TypeLogOut ;
 
 export const ReducerStart = (state: IStartPage = initialStateStartPage, action: TypesStartPage) => {
   switch (action.type) {
@@ -76,6 +83,9 @@ export const ReducerStart = (state: IStartPage = initialStateStartPage, action: 
     }
     case Actions.IS_LOGIN : {
       return {...state, isLogin : action.payload}
+    }
+    case Actions.LOG_OUT : {
+      return {...state, isLogin : false}
     }
     default:
       return state;

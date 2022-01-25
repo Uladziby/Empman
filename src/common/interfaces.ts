@@ -1,8 +1,9 @@
-import { deleteEmp } from 'common/api';
 import { Constants } from "./constants";
+
 export interface IStore {
   start: IStartPage;
-  main:IMainPage;
+  main: IMainPage;
+  detail: IDetailPage;
   isLoading: boolean;
 }
 
@@ -23,20 +24,23 @@ export interface IUserData {
   email: string;
   password: string;
 }
-export interface IEmployee{
+export interface IEmployee {
   id: string;
-  firstName : string;
-  lastName : string;
+  firstName: string;
+  lastName: string;
   age: number;
   dataFrom: string;
-  position : string;
-  freeDays : number;
-  phone : string;
-  skills : string[];
+  position: string;
+  freeDays: number;
+  phone: string;
+  skills: string[];
 }
 
 export interface IMainPage {
-  Employees : IEmployee[];
-  deleteEmp : string;
+  Employees: IEmployee[];
+  deleteEmp: string;
+}
 
+export interface IDetailPage {
+  employee: IEmployee;
 }

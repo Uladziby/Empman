@@ -15,7 +15,7 @@ export const useRoutes = () => {
         <Route path={Routes.main} exact>
           <MainPage />
         </Route>
-        <Route path={Routes.detail} exact>
+        <Route path={`${Routes.detail}/:id`} exact>
           <DetailPage />
         </Route>
         <Redirect to={Routes.auth} />
