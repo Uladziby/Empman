@@ -63,9 +63,6 @@ export const Header: React.FC = () => {
           <Navbar.Brand href="/" onClick={handler}>
             Empman
           </Navbar.Brand>
-          <Nav className="me-auto">
-            <Nav.Link>Home</Nav.Link>
-          </Nav>
           <Nav>
             <Button variant="warning" className="m-2" onClick={(e: SyntheticEvent) => handleShow(e)}>
               Log In

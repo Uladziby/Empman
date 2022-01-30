@@ -9,7 +9,7 @@ export interface IStore {
 
 export interface IStartPage {
   TypeLogon: Constants.SHOW_LOGIN | Constants.SHOW_SIGNUP;
-  user: IUserData[];
+  user: IDataLogIn;
   isLogin: boolean;
 }
 export interface IDataLogIn {
@@ -23,17 +23,23 @@ export interface IUserData {
   lastName: string;
   email: string;
   password: string;
+  isAdmin : boolean;
 }
-export interface IEmployee {
+
+export interface IEmployee{
   id: string;
-  firstName: string;
-  lastName: string;
+  photo: string;
+  firstName : string;
+  lastName : string;
+  location : string;
   age: number;
-  dataFrom: string;
-  position: string;
-  freeDays: number;
-  phone: string;
-  skills: string[];
+  dateFrom: string;
+  email: string;
+  phone : string;
+  freeDays : number;
+  position : string;
+  level: 'junior'|'middle'|'senior';
+  skills : string[];
 }
 
 export interface IMainPage {

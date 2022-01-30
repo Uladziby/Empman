@@ -16,11 +16,17 @@ body {
   display: flex;
   position: absolute;
   left: 50vw;
-  top: 2%;
+  top: 25%;
 }
 
 .footer_section{
   display: flex;
     justify-content: center;
     width: 100%;
+}
+
+@media (max-width: 1920px) {
+  .container{
+    max-width: 1900px;
+  }
 }

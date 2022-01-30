@@ -2,7 +2,9 @@ import { Routes } from "common/constants";
 import { IEmployee } from "common/interfaces";
 import { useDispatch } from "react-redux";
 import { Link, Route } from "react-router-dom";
+import { ActionLoader } from "redux/ReducerLoader";
 import { deleteEmpThunks, getDetailEmp } from "redux/thunks";
+import { PhotoComponent } from "UI-components/PhotoComponent";
 import "./CardUser.scss";
 
 type PropsCardEmp = {
@@ -16,17 +18,20 @@ const CardEmp: React.FC<PropsCardEmp> = ({ data }) => {
   };
 
   const handlerGetEmp = () => {
-    dispatch(getDetailEmp(data.id))
+    dispatch(ActionLoader(true));
+    dispatch(getDetailEmp(data.id));
+    console.log(data.id, "data.id")
+    setTimeout(()=>{
+      dispatch(ActionLoader(false));
+    },2000)
   };
   return (
-    <div className="col-lg-4 mt-2 main_content__empcard">
+    <div className="col-lg-4 mt-2 main_content__empcard" id="empcard">
       <div className="main_content__empcard-img">
-        <div className="player-card__photo-container">
-          <div className="player-card__photo">
-            {data.firstName[0]}
-            {data.lastName[0]}
-          </div>
-        </div>
+        <PhotoComponent
+          title={`${data.firstName[0]}
+            ${data.lastName[0]}`}
+        />
         <span className="h2">
           {data.firstName} {data.lastName}
         </span>

@@ -1,10 +1,9 @@
-import { getAllUsers } from "common/api";
 import { Constants } from "common/constants";
 import { IStore } from "common/interfaces";
 import { FormLogin } from "components/forms/FormLogin";
 import { FormRegister } from "components/forms/FormRegister";
 import React from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import "../components/card.scss";
 
 export const AuthPage: React.FC = () => {

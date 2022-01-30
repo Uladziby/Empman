@@ -1,12 +1,12 @@
 import "./forms.scss";
 import { useForm } from "react-hook-form";
-import { useDispatch } from "react-redux";
-import { Loader } from "common/loader";
-import { checkLogInThunks, getAllEmpThunks, getUsers } from "redux/thunks";
-import { IDataLogIn } from "common/interfaces";
+import { useDispatch, useSelector } from "react-redux";
+import { checkLogInThunks, getAllEmpThunks } from "redux/thunks";
+import { IDataLogIn, IStore } from "common/interfaces";
 import { ActionLoader } from "redux/ReducerLoader";
-import { Redirect, useHistory } from "react-router-dom";
-import { getAllEmployees } from "common/api";
+import { useHistory } from "react-router-dom";
+import { ActionSetCurrentUser } from "redux/actions";
+import { useEffect, useState } from "react";
 
 export const FormLogin: React.FC = () => {
   const {
@@ -15,25 +15,45 @@ export const FormLogin: React.FC = () => {
     formState: { errors },
   } = useForm({
     defaultValues: {
-      email: "admin@admin",
-      password: "admin",
+      email: "greg@gmail.com",
+      password: "1111",
     },
   });
   const dispatch = useDispatch();
   const history = useHistory();
+  const [user ,setUser] =useState<IDataLogIn>({
+    email: "",
+    password: "",
+  },)
+  const isLoginUser = useSelector((state: IStore) : boolean => {
+    return state.start.isLogin;
+  });
+ 
+  const validate = (data: IDataLogIn)=>{
+    
+    setUser(data);
+    dispatch(ActionLoader(true));
+    dispatch(checkLogInThunks(data));
+  
+    setTimeout(() => {
+      history.push("/main");
+      dispatch(getAllEmpThunks());
+      dispatch(ActionLoader(false));
+    }, 3000);
+   
+  }
+  useEffect(()=>{
+    if(isLoginUser){
+      dispatch(ActionSetCurrentUser(user))
+    }
+  },[isLoginUser])
 
   return (
     <>
       <form
         className="form"
         onSubmit={handleSubmit((data: IDataLogIn) => {
-          dispatch(ActionLoader(true));
-          dispatch(checkLogInThunks(data));
-          setTimeout(() => {
-            history.push("/main");
-            dispatch(getAllEmpThunks());
-            dispatch(ActionLoader(false));
-          }, 3000);
+          validate(data)
         })}
       >
         <h3>Log in</h3>
@@ -65,7 +85,7 @@ export const FormLogin: React.FC = () => {
           />
         </div>
         <button type="submit" className="btn btn-primary">
-          Submit
+          Entry
         </button>
       </form>
     </>

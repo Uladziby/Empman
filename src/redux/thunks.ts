@@ -1,7 +1,7 @@
-import { IEmployee } from "common/interfaces";
+import { IEmployee, IUserData } from "common/interfaces";
 import { IDataLogIn } from "./../common/interfaces";
 import { AxiosResponse } from "axios";
-import { checkLogIn, createEmp, deleteEmp, getAllEmployees, getAllUsers, getDataEmp, Logout } from "common/api";
+import { checkLogIn, createEmp, createNewUser, deleteEmp, getAllEmployees, getAllUsers, getDataEmp, Logout, updateDetailEmp } from "common/api";
 import { Actions } from "common/constants";
 
 export const getUsers = () => {
@@ -18,10 +18,12 @@ export const getUsers = () => {
 export const getDetailEmp = (id:string) => {
   return (dispatch: (arg0: { type: string; payload: AxiosResponse<any> }) => void) => {
     getDataEmp(id).then((user) => {
+      setTimeout(() => {
       dispatch({
         type: Actions.GET_DETAIL_EMP,
         payload: user!.data,
       });
+    }, 2000);
     });
   };
 };
@@ -31,6 +33,8 @@ GetAllUser запрашивает на сервере данные
 */
 
 //warnings при если пользователь не существует
+//предыдущее значение показывает
+
 
 export const checkLogInThunks = (data: IDataLogIn) => {
   return (dispatch: any) => {
@@ -87,6 +91,37 @@ export const createNewEmployeeThunks = () => {
           type: Actions.CREATE_EMP,
           payload: res?.data,
         });
+      })
+      .catch((error) => console.log(error, "not create"));
+  };
+};
+
+export const updateDetailEmpThunks = (data : IEmployee, id:string) => {
+  return (dispatch: (arg0: { type: string; payload: AxiosResponse<IEmployee> }) => void) => {
+    updateDetailEmp(data, id)
+      .then((res) => {
+        console.log(res?.status,  res?.data)
+        dispatch({
+          type: Actions.UPDATE_EMP,
+          payload: res?.data,
+        });
+      })
+      .catch((error) => console.log(error, "not create"));
+  };
+};
+
+
+//Register new user 
+
+export const createNewUserThunks = (data : IUserData) => {
+  return () => {
+    createNewUser(data)
+      .then((res) => {
+        console.log(res?.status,  res?.data)
+     /*    dispatch({
+          type: Actions.CREATE_NEW_USER,
+          payload: res?.data,
+        }); */
       })
       .catch((error) => console.log(error, "not create"));
   };

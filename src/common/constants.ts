@@ -8,11 +8,16 @@ export enum Routes {
   main = "/main",
   detail = "/detail",
 }
-
+export enum Positions {
+  junior = "junior",
+  middle = "middle",
+  senior = "senior",
+}
 export enum AsideLink {
   MyTeam = "/main",
   Detail = "/detail",
 }
+
 
 export enum Actions {
   CHANGE_LOGON_TYPE = "CHANGE_LOGON_TYPE",
@@ -25,5 +30,7 @@ export enum Actions {
   CREATE_EMP = "CREATE_EMP",
   DEL_EMP = "DEL_EMP",
   LOG_OUT = "LOG_OUT",
-  GET_DETAIL_EMP ="GET_DETAIL_EMP",
+  GET_DETAIL_EMP = "GET_DETAIL_EMP",
+  UPDATE_EMP = "UPDATE_EMP",
+  SET_CURRENT_USER = "SET_CURRENT_USER",
 }
