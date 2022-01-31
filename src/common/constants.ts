@@ -1,3 +1,4 @@
+import { IUserData } from 'common/interfaces';
 export enum Constants {
   SHOW_LOGIN = "SHOW_LOGIN",
   SHOW_SIGNUP = "SHOW_SIGNUP",
@@ -8,12 +9,12 @@ export enum Routes {
   main = "/main",
   detail = "/detail",
 }
-export enum Positions {
+export enum PositionsEnum {
   junior = "junior",
   middle = "middle",
   senior = "senior",
 }
-export enum AsideLink {
+export enum AsideLinkEnum {
   MyTeam = "/main",
   Detail = "/detail",
 }
@@ -33,4 +34,14 @@ export enum Actions {
   GET_DETAIL_EMP = "GET_DETAIL_EMP",
   UPDATE_EMP = "UPDATE_EMP",
   SET_CURRENT_USER = "SET_CURRENT_USER",
+}
+
+
+export const emptyUser : IUserData = {
+  id: '',
+  firstName: '',
+  lastName: '',
+  email: '',
+  password: '',
+  isAdmin: false
 }

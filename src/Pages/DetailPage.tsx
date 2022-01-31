@@ -1,4 +1,4 @@
-import { AsideLink } from "common/constants";
+import { AsideLinkEnum } from "common/constants";
 import { IEmployee, IStore } from "common/interfaces";
 import { AsideItem } from "components/asideItem";
 import { FormDetail } from "components/forms/FormDetail";
@@ -6,13 +6,15 @@ import { useEffect } from "react";
 import { Button } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory, useParams } from "react-router-dom";
-import { updateDetailEmpThunks } from "redux/thunks";
+import { getUsers, updateDetailEmpThunks } from "redux/thunks";
 import { PhotoComponent } from "UI-components/PhotoComponent";
 import "./DetailPage.scss";
 
 export const DetailPage: React.FC = () => {
   const { id } = useParams<{ id: string }>();
   const { firstName, lastName } = useSelector((state: IStore) => state.detail.employee);
+  const isAdmin = useSelector((state: IStore) => state.start.user.isAdmin);
+
   const dispatch = useDispatch();
   const dataFromForm = (data: IEmployee) => {
     console.log(data.firstName, "detailpage");
@@ -24,14 +26,14 @@ export const DetailPage: React.FC = () => {
   }, [firstName, lastName]);
 
   const reRenderForm = () => {
-    return <FormDetail handlerDetailForm={dataFromForm} />;
+    return <FormDetail isAdmin = {isAdmin} handlerDetailForm={dataFromForm} />;
   };
   const history = useHistory();
   return (
     <div className="container">
       <div className="sidebar-sticky main_aside">
         <ul className="nav flex-column">
-          {Object.keys(AsideLink).map((item, index) => {
+          {Object.keys(AsideLinkEnum).map((item, index) => {
             return <AsideItem key={index} title={item} index={index} />;
           })}
         </ul>
@@ -43,6 +45,7 @@ export const DetailPage: React.FC = () => {
             color="primary"
             onClick={() => {
               history.goBack();
+            
             }}
           >
             <svg

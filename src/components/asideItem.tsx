@@ -1,6 +1,5 @@
-import { AsideLink, Routes } from "common/constants";
 import React from "react";
-import { Link, Router } from "react-router-dom";
+import { Link, Router, useHistory } from "react-router-dom";
 
 
 type PropsAsideItem={
@@ -8,10 +7,13 @@ type PropsAsideItem={
     index: number
 }
 export const AsideItem: React.FC<PropsAsideItem> = ({title,index}) => {
+  const history = useHistory();
+const changeLocation =()=>{
+  history.goForward();
+}
   return (
-
     <li className='nav-item' id={index.toString()}>
-      <Link className="nav-link active"  to={Object.values(AsideLink)[index]}>
+      <button className="nav-link aside_btn active" onClick={changeLocation} >
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="24"
@@ -28,7 +30,7 @@ export const AsideItem: React.FC<PropsAsideItem> = ({title,index}) => {
           <polyline points="9 22 9 12 15 12 15 22"></polyline>
         </svg>
         {title}
-      </Link>
+      </button>
     </li>
   );
 };

@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "proxy": "https://empman-uladziby.herokuapp.com/",
   "scripts": {
     "dev": "webpack --mode development",
     "build": "webpack --mode production",
@@ -38,6 +39,7 @@
     "copy-webpack-plugin": "^10.2.0",
     "html-loader": "^3.0.1",
     "html-webpack-plugin": "^5.5.0",
+    "http-proxy-middleware": "^2.0.2",
     "lint-staged": "^11.1.2",
     "node-sass": "^6.0.1",
     "normalize.css": "^8.0.1",

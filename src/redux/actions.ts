@@ -1,4 +1,4 @@
-import { IDataLogIn, IUserData } from "./../common/interfaces";
+import { IDataLogIn, IResponseDataUser, IUserData } from "./../common/interfaces";
 import { Actions, Constants } from "./../common/constants";
 
 import { IStartPage } from "common/interfaces";
@@ -19,7 +19,7 @@ export type TypeEnterUser = {
 
 export type TypeSetCurrentUser = {
   type: typeof Actions.SET_CURRENT_USER;
-  payload: IDataLogIn;
+  payload: IResponseDataUser;
 };
 
 export type TypeGetUsers = {
@@ -58,7 +58,7 @@ export const ActionLogout = (data: boolean): TypeLogOut => ({
   type: Actions.LOG_OUT,
   payload: data,
 });
-export const ActionSetCurrentUser = (data: IDataLogIn): TypeSetCurrentUser => ({
+export const ActionSetCurrentUser = (data: IUserData): TypeSetCurrentUser => ({
   type: Actions.SET_CURRENT_USER,
   payload: data,
 });
@@ -70,9 +70,10 @@ export const ActionSetCurrentUser = (data: IDataLogIn): TypeSetCurrentUser => ({
  create  Reducer => import all from actions to reducer=>
  create initialState => add Reducer to RootReducer
  */
+
 export const initialStateStartPage: IStartPage = {
   TypeLogon: Constants.SHOW_LOGIN,
-  user: { email: "", password: "" },
+  user: { id: "", firstName: "", lastName: "", email: "", password: "", isAdmin: false },
   isLogin: false,
 };
 

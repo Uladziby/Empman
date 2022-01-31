@@ -1,7 +1,17 @@
 import { IEmployee, IUserData } from "common/interfaces";
 import { IDataLogIn } from "./../common/interfaces";
 import { AxiosResponse } from "axios";
-import { checkLogIn, createEmp, createNewUser, deleteEmp, getAllEmployees, getAllUsers, getDataEmp, Logout, updateDetailEmp } from "common/api";
+import {
+  checkLogIn,
+  createEmp,
+  createNewUser,
+  deleteEmp,
+  getAllEmployees,
+  getAllUsers,
+  getDataEmp,
+  Logout,
+  updateDetailEmp,
+} from "common/api";
 import { Actions } from "common/constants";
 
 export const getUsers = () => {
@@ -15,15 +25,15 @@ export const getUsers = () => {
   };
 };
 
-export const getDetailEmp = (id:string) => {
+export const getDetailEmp = (id: string) => {
   return (dispatch: (arg0: { type: string; payload: AxiosResponse<any> }) => void) => {
     getDataEmp(id).then((user) => {
       setTimeout(() => {
-      dispatch({
-        type: Actions.GET_DETAIL_EMP,
-        payload: user!.data,
-      });
-    }, 2000);
+        dispatch({
+          type: Actions.GET_DETAIL_EMP,
+          payload: user!.data,
+        });
+      }, 2000);
     });
   };
 };
@@ -35,22 +45,35 @@ GetAllUser запрашивает на сервере данные
 //warnings при если пользователь не существует
 //предыдущее значение показывает
 
-
 export const checkLogInThunks = (data: IDataLogIn) => {
   return (dispatch: any) => {
-    checkLogIn(data).then((res) => {
-      setTimeout(() => {
+    checkLogIn(data)
+      .then((res) => {
+        setTimeout(() => { 
+          console.log(res)
+          if (res?.status === 400) {
+            alert("user not exist");
+          }
+            dispatch({
+              type: Actions.SET_CURRENT_USER,
+              payload: res!.data,
+            });
+          
+        }, 2000);
+      })
+      .then(() => {
         dispatch({
           type: Actions.IS_LOGIN,
-          payload: res!.data,
+          payload: true,
         });
-      }, 2000);
-    });
+      });
   };
 };
+
 export const logoutThunks = (data: boolean) => {
   return (dispatch: any) => {
     Logout(data).then((res) => {
+      console.log(res)
       dispatch({
         type: Actions.LOG_OUT,
         payload: res!.data,
@@ -96,11 +119,11 @@ export const createNewEmployeeThunks = () => {
   };
 };
 
-export const updateDetailEmpThunks = (data : IEmployee, id:string) => {
+export const updateDetailEmpThunks = (data: IEmployee, id: string) => {
   return (dispatch: (arg0: { type: string; payload: AxiosResponse<IEmployee> }) => void) => {
     updateDetailEmp(data, id)
       .then((res) => {
-        console.log(res?.status,  res?.data)
+        console.log(res?.status, res?.data);
         dispatch({
           type: Actions.UPDATE_EMP,
           payload: res?.data,
@@ -110,15 +133,13 @@ export const updateDetailEmpThunks = (data : IEmployee, id:string) => {
   };
 };
 
+//Register new user
 
-//Register new user 
-
-export const createNewUserThunks = (data : IUserData) => {
+export const createNewUserThunks = (data: IUserData) => {
   return () => {
     createNewUser(data)
       .then((res) => {
-        console.log(res?.status,  res?.data)
-     /*    dispatch({
+        /*    dispatch({
           type: Actions.CREATE_NEW_USER,
           payload: res?.data,
         }); */

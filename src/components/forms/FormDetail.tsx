@@ -1,8 +1,8 @@
-import { Positions } from "common/constants";
+import { PositionsEnum } from "common/constants";
 import { IEmployee, IStore } from "common/interfaces";
 import { useEffect, useState } from "react";
 import { UseFormHandleSubmit, FieldValues, useForm, SubmitHandler } from "react-hook-form";
-import { useSelector } from "react-redux";
+import { connectAdvanced, useSelector } from "react-redux";
 import {
   Form,
   FormGroup,
@@ -18,9 +18,10 @@ import {
 
 type PropsFormDetail = {
   handlerDetailForm: (data: IEmployee) => void;
+  isAdmin: boolean;
 };
 
-export const FormDetail: React.FC<PropsFormDetail> = ({ handlerDetailForm }) => {
+export const FormDetail: React.FC<PropsFormDetail> = ({ handlerDetailForm, isAdmin }) => {
   const {
     firstName,
     lastName,
@@ -56,11 +57,12 @@ export const FormDetail: React.FC<PropsFormDetail> = ({ handlerDetailForm }) => 
 
   useEffect(() => {
     setDataForm(dataEmp);
+    console.log(isAdmin);
   }, [dataEmp]);
 
   function onSubmitForm(data: IEmployee) {
-    handlerDetailForm(data);
-    setDataForm(data)
+    handlerDetailForm(Object.assign(data, dataForm));
+    setDataForm(data);
     console.log("form", dataForm);
     //Object.assign(dataEmp,data)
   }
@@ -72,7 +74,7 @@ export const FormDetail: React.FC<PropsFormDetail> = ({ handlerDetailForm }) => 
           Upload Photo
         </Label>
         <Col sm={10}>
-          <Input id="exampleFile" name="file" type="file" />
+          <Input id="exampleFile" name="file" type="file" readOnly={!isAdmin} />
         </Col>
       </FormGroup>
       <FormGroup row>
@@ -81,6 +83,7 @@ export const FormDetail: React.FC<PropsFormDetail> = ({ handlerDetailForm }) => 
         </Label>
         <Col sm={10}>
           <input
+            readOnly={!isAdmin}
             type="text"
             className="form-control"
             {...register("firstName")}
@@ -95,6 +98,7 @@ export const FormDetail: React.FC<PropsFormDetail> = ({ handlerDetailForm }) => 
         </Label>
         <Col sm={10}>
           <input
+            readOnly={!isAdmin}
             type="text"
             className="form-control"
             {...register("lastName")}
@@ -108,7 +112,14 @@ export const FormDetail: React.FC<PropsFormDetail> = ({ handlerDetailForm }) => 
           Location
         </Label>
         <Col sm={10}>
-          <input type="text" className="form-control" {...register("location")} value={location} />
+          <input
+            readOnly={!isAdmin}
+            type="text"
+            className="form-control"
+            {...register("location")}
+            value={dataForm.location}
+            onChange={(ev) => setDataForm({ ...dataForm, location: ev.target.value })}
+          />
         </Col>
       </FormGroup>
       <FormGroup row>
@@ -116,7 +127,14 @@ export const FormDetail: React.FC<PropsFormDetail> = ({ handlerDetailForm }) => 
           Age
         </Label>
         <Col sm={10}>
-          <input type="text" className="form-control" {...register("age")} value={age} />
+          <input
+            readOnly={!isAdmin}
+            type="number"
+            className="form-control"
+            {...register("age")}
+            value={dataForm.age}
+            onChange={(ev) => setDataForm({ ...dataForm, age: Number(ev.target.value) })}
+          />
         </Col>
       </FormGroup>
       <FormGroup row>
@@ -124,7 +142,14 @@ export const FormDetail: React.FC<PropsFormDetail> = ({ handlerDetailForm }) => 
           dateFrom
         </Label>
         <Col sm={10}>
-          <input type="text" className="form-control" {...register("dateFrom")} value={dateFrom} />
+          <input
+            readOnly={!isAdmin}
+            type="text"
+            className="form-control"
+            {...register("dateFrom")}
+            value={dataForm.dateFrom}
+            onChange={(ev) => setDataForm({ ...dataForm, dateFrom: ev.target.value })}
+          />
         </Col>
       </FormGroup>
       <FormGroup row>
@@ -132,7 +157,14 @@ export const FormDetail: React.FC<PropsFormDetail> = ({ handlerDetailForm }) => 
           Email
         </Label>
         <Col sm={10}>
-          <input type="email" className="form-control" {...register("email")} value={email} />
+          <input
+            readOnly={!isAdmin}
+            type="email"
+            className="form-control"
+            {...register("email")}
+            value={dataForm.email}
+            onChange={(ev) => setDataForm({ ...dataForm, email: ev.target.value })}
+          />
         </Col>
       </FormGroup>
       <FormGroup row>
@@ -140,7 +172,14 @@ export const FormDetail: React.FC<PropsFormDetail> = ({ handlerDetailForm }) => 
           Phone
         </Label>
         <Col sm={10}>
-          <input type="phone" className="form-control" {...register("phone")} value={phone} />
+          <input
+            readOnly={!isAdmin}
+            type="phone"
+            className="form-control"
+            {...register("phone")}
+            value={dataForm.phone}
+            onChange={(ev) => setDataForm({ ...dataForm, phone: ev.target.value })}
+          />
         </Col>
       </FormGroup>
       <FormGroup row>
@@ -148,7 +187,14 @@ export const FormDetail: React.FC<PropsFormDetail> = ({ handlerDetailForm }) => 
           Free day
         </Label>
         <Col sm={10}>
-          <input type="text" className="form-control" {...register("freeDays")} value={freeDays} />
+          <input
+            readOnly={!isAdmin}
+            type="number"
+            className="form-control"
+            {...register("freeDays")}
+            value={dataForm.freeDays}
+            onChange={(ev) => setDataForm({ ...dataForm, freeDays: Number(ev.target.value) })}
+          />
         </Col>
       </FormGroup>
       <FormGroup row>
@@ -156,7 +202,14 @@ export const FormDetail: React.FC<PropsFormDetail> = ({ handlerDetailForm }) => 
           Position
         </Label>
         <Col sm={10}>
-          <input type="text" className="form-control" {...register("position")} value={position} />
+          <input
+            readOnly={!isAdmin}
+            type="text"
+            className="form-control"
+            {...register("position")}
+            value={dataForm.position}
+            onChange={(ev) => setDataForm({ ...dataForm, position: ev.target.value })}
+          />
         </Col>
       </FormGroup>
       <FormGroup row>
@@ -164,10 +217,15 @@ export const FormDetail: React.FC<PropsFormDetail> = ({ handlerDetailForm }) => 
           Select
         </Label>
         <Col sm={10}>
-          <select className="form-control" {...register("level")} value={level}>
-            <option>{Positions.junior}</option>
-            <option>{Positions.middle}</option>
-            <option>{Positions.senior}</option>
+          <select
+            className="form-control"
+            {...register("level")}
+            value={dataForm.level}
+            onChange={(ev) => setDataForm({ ...dataForm, level: ev.target.value as PositionsEnum })}
+          >
+            <option>{PositionsEnum.junior}</option>
+            <option>{PositionsEnum.middle}</option>
+            <option>{PositionsEnum.senior}</option>
           </select>
         </Col>
       </FormGroup>
@@ -178,7 +236,12 @@ export const FormDetail: React.FC<PropsFormDetail> = ({ handlerDetailForm }) => 
             size: 10,
           }}
         >
-          <Button id="Tooltip" outline color="primary" type="submit" /* onClick={preventDefault} */>
+          <Button
+            id="Tooltip"
+            outline
+            color={`${isAdmin ? "primary" : "secondary"}`}
+            type={`${isAdmin ? "submit" : "reset"}`}
+          >
             Save
           </Button>
           <Tooltip placement="top" target="Tooltip" autohide={true}>

@@ -9,13 +9,21 @@ export interface IStore {
 
 export interface IStartPage {
   TypeLogon: Constants.SHOW_LOGIN | Constants.SHOW_SIGNUP;
-  user: IDataLogIn;
+  user: IUserData;
   isLogin: boolean;
 }
 export interface IDataLogIn {
   email: string;
   password: string;
 }
+
+export interface IResponseDataUser {
+  firstName: string;
+  lastName: string;
+  email: string;
+  password: string;
+}
+
 
 export interface IUserData {
   id: string;

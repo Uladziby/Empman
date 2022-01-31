@@ -15,8 +15,8 @@ export const FormLogin: React.FC = () => {
     formState: { errors },
   } = useForm({
     defaultValues: {
-      email: "greg@gmail.com",
-      password: "1111",
+      email: "admin@admin",
+      password: "admin",
     },
   });
   const dispatch = useDispatch();
@@ -42,11 +42,11 @@ export const FormLogin: React.FC = () => {
     }, 3000);
    
   }
-  useEffect(()=>{
+  /* useEffect(()=>{
     if(isLoginUser){
       dispatch(ActionSetCurrentUser(user))
     }
-  },[isLoginUser])
+  },[isLoginUser]) */
 
   return (
     <>
