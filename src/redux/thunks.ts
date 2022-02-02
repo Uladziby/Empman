@@ -71,7 +71,7 @@ export const checkLogInThunks = (data: IDataLogIn) => {
 };
 
 export const logoutThunks = (data: boolean) => {
-  return (dispatch: any) => {
+  return (dispatch: (arg0: { type: string; payload: AxiosResponse<boolean> }) => void) => {
     Logout(data).then((res) => {
       console.log(res)
       dispatch({

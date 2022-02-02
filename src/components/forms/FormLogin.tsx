@@ -36,9 +36,9 @@ export const FormLogin: React.FC = () => {
     dispatch(checkLogInThunks(data));
   
     setTimeout(() => {
-      history.push("/main");
       dispatch(getAllEmpThunks());
       dispatch(ActionLoader(false));
+      history.push("/main");
     }, 3000);
    
   }

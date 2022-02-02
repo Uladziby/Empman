@@ -5,7 +5,7 @@ import React, { SyntheticEvent } from "react";
 import { Button, Navbar, Container, Nav } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
-import { ActionChangeLogonType, ActionSetCurrentUser } from "redux/actions";
+import { ActionChangeLogonType, ActionLogout, ActionSetCurrentUser } from "redux/actions";
 import { logoutThunks } from "redux/thunks";
 
 export const Header: React.FC = () => {
@@ -33,9 +33,9 @@ export const Header: React.FC = () => {
   };
 
   const logout = () => {
-    history.push("/");
-    dispatch(logoutThunks(false));
+    dispatch(ActionLogout(false));
     dispatch(ActionSetCurrentUser(emptyUser));
+    history.push("/");
   };
 
   if (isAuth) {

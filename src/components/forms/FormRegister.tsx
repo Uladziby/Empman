@@ -18,7 +18,6 @@ export const FormRegister: React.FC = () => {
         className="form"
         onSubmit={handleSubmit((data :IUserData) => {
           dispatch(createNewUserThunks(data));
-          console.log(data);
           dispatch(ActionLoader(true));
           dispatch(checkLogInThunks(data));
           setTimeout(() => {

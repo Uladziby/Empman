@@ -26,7 +26,7 @@ export const MainPage: React.FC = () => {
   useEffect(() => {
     dispatch(getAllEmpThunks());
     updateCards();
-  }, [dataEmp]);
+  }, []);
 
   const updateCards = () => {
     return filterEmp(dataEmp, searchVal).map((item, index) => {

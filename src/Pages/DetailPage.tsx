@@ -2,7 +2,7 @@ import { AsideLinkEnum } from "common/constants";
 import { IEmployee, IStore } from "common/interfaces";
 import { AsideItem } from "components/asideItem";
 import { FormDetail } from "components/forms/FormDetail";
-import { useEffect } from "react";
+import { useCallback, useEffect } from "react";
 import { Button } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory, useParams } from "react-router-dom";
@@ -20,13 +20,12 @@ export const DetailPage: React.FC = () => {
     console.log(data.firstName, "detailpage");
     dispatch(updateDetailEmpThunks(data, id.slice(1)));
   };
-  useEffect(() => {
-    console.log(firstName, lastName);
+  useCallback(() => {
     reRenderForm();
   }, [firstName, lastName]);
 
   const reRenderForm = () => {
-    return <FormDetail isAdmin = {isAdmin} handlerDetailForm={dataFromForm} />;
+    return <FormDetail isAdmin={isAdmin} handlerDetailForm={dataFromForm} />;
   };
   const history = useHistory();
   return (
@@ -45,7 +44,6 @@ export const DetailPage: React.FC = () => {
             color="primary"
             onClick={() => {
               history.goBack();
-            
             }}
           >
             <svg

@@ -9,7 +9,12 @@ type PropsAsideItem={
 export const AsideItem: React.FC<PropsAsideItem> = ({title,index}) => {
   const history = useHistory();
 const changeLocation =()=>{
-  history.goForward();
+  if(title === "Detail"){
+    history.goForward();
+  }else{
+    history.push('/main');
+  }
+  
 }
   return (
     <li className='nav-item' id={index.toString()}>

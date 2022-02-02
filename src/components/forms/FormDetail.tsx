@@ -63,8 +63,6 @@ export const FormDetail: React.FC<PropsFormDetail> = ({ handlerDetailForm, isAdm
   function onSubmitForm(data: IEmployee) {
     handlerDetailForm(Object.assign(data, dataForm));
     setDataForm(data);
-    console.log("form", dataForm);
-    //Object.assign(dataEmp,data)
   }
 
   return (
