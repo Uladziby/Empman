@@ -2,7 +2,6 @@ import axios, { AxiosResponse } from "axios";
 import {
   IDataLogIn,
   IEmployee,
-  IResponseDataUser,
   IUserData,
 } from "./interfaces";
 
@@ -32,6 +31,9 @@ const instAxios = axios.create({
   },
 });
 
+export async function ping(): Promise<AxiosResponse<string>> {
+  return await axios.get(`${urlBase}/login/ping`);
+}
 export async function getAllUsers(): Promise<AxiosResponse> {
   return await axios.get(mainUrl);
 }

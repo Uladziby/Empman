@@ -19,10 +19,10 @@ export const FormRegister: React.FC = () => {
           dispatch(ActionLoader(true));
           dispatch(createNewUserThunks(data));
           dispatch(checkLogInThunks(data));
-          history.push("/main");
           setTimeout(() => {
             dispatch(getAllEmpThunks());
             dispatch(ActionLoader(false));
+            history.push("/main");
           }, 3000);
         })}
       >

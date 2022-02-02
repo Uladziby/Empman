@@ -1,3 +1,4 @@
+import { ping } from "common/api";
 import { Constants } from "common/constants";
 import { IStore } from "common/interfaces";
 import { FormLogin } from "components/forms/FormLogin";
@@ -11,7 +12,7 @@ export const AuthPage: React.FC = () => {
   const storeStartPage = useSelector((state: IStore) => state.start.TypeLogon);
   return (
     <main className="start">
-      <div className={`card-container ${storeStartPage === Constants.SHOW_LOGIN?  'unflipped':'flipped' }`}>
+      <div className={`card-container ${storeStartPage === Constants.SHOW_LOGIN ? "unflipped" : "flipped"}`}>
         <div className="card">
           <div className="card__front">
             <FormLogin />
