@@ -1,8 +1,8 @@
 # Project for manage personal in your company.
 
-## link for deploy : https://empman-uladziby.netlify.app/
+## client - deploy : https://empman-uladziby.netlify.app/
 
-## link server : https://empman-uladziby.herokuapp.com/
+## server - deploy : https://empman-uladziby.herokuapp.com/
 
 ### login how administrator :  admin@admin , password : admin 
 
