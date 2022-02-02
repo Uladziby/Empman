@@ -1,12 +1,9 @@
 import axios, { AxiosResponse } from "axios";
-import {
-  IDataLogIn,
-  IEmployee,
-  IUserData,
-} from "./interfaces";
+import { IDataLogIn, IEmployee, IUserData } from "./interfaces";
 
 const urlBase = "https://empman-uladziby.herokuapp.com";
-//const urlBase = "http://localhost:4000";
+/* const urlBase = "http://localhost:4000";
+ */ 
 const mainUrl = `${urlBase}/main`;
 const login = `${urlBase}/login`;
 const logout = `${urlBase}/logout`;
@@ -25,9 +22,9 @@ const instAxios = axios.create({
   /* withCredentials: true, */
   baseURL: `${urlBase}`,
   headers: {
-    "Access-Control-Allow-Credentials": "true",
+    //"Access-Control-Allow-Credentials": "true",
     "Content-Type": "application/json",
-    "Access-Control-Allow-Origin": "true",
+    // "Access-Control-Allow-Origin": "true",
   },
 });
 
@@ -38,9 +35,7 @@ export async function getAllUsers(): Promise<AxiosResponse> {
   return await axios.get(mainUrl);
 }
 
-export async function checkLogIn(
-  data: IDataLogIn
-): Promise<AxiosResponse<IUserData> | undefined> {
+export async function checkLogIn(data: IDataLogIn): Promise<AxiosResponse<IUserData> | undefined> {
   try {
     console.log(data);
     const res = await instAxios.post("/login", data);
@@ -51,9 +46,7 @@ export async function checkLogIn(
   }
 }
 
-export async function Logout(
-  data: boolean
-): Promise<AxiosResponse | undefined> {
+export async function Logout(data: boolean): Promise<AxiosResponse | undefined> {
   try {
     console.log(data);
     return await instAxios.post(logout, false);
@@ -66,9 +59,7 @@ export async function getAllEmployees(): Promise<AxiosResponse> {
   return await instAxios.get(employees, headers);
 }
 
-export async function deleteEmp(
-  id: string
-): Promise<AxiosResponse | undefined> {
+export async function deleteEmp(id: string): Promise<AxiosResponse | undefined> {
   try {
     return await instAxios.delete(`${employees}/:${id}`);
   } catch (error) {
@@ -84,9 +75,7 @@ export async function createEmp(): Promise<AxiosResponse | undefined> {
   }
 }
 
-export async function getDataEmp(
-  id: string
-): Promise<AxiosResponse | undefined> {
+export async function getDataEmp(id: string): Promise<AxiosResponse | undefined> {
   try {
     return await instAxios.get(`${detail}/:${id}`);
   } catch (error) {
@@ -94,10 +83,7 @@ export async function getDataEmp(
   }
 }
 
-export async function updateDetailEmp(
-  data: IEmployee,
-  id: string
-): Promise<AxiosResponse | undefined> {
+export async function updateDetailEmp(data: IEmployee, id: string): Promise<AxiosResponse | undefined> {
   try {
     return await instAxios.put(`/detail/:${id}`, data);
   } catch (error) {
@@ -105,9 +91,7 @@ export async function updateDetailEmp(
   }
 }
 //for register new user
-export async function createNewUser(
-  data: IUserData
-): Promise<AxiosResponse | undefined> {
+export async function createNewUser(data: IUserData): Promise<AxiosResponse | undefined> {
   try {
     return await instAxios.post(`${registerUser}`, data, headers);
   } catch (error) {
