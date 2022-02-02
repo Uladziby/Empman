@@ -1,4 +1,4 @@
-import { IEmployee } from 'common/interfaces';
+import { IEmployee } from "common/interfaces";
 import { uid } from "uid";
 
 export function createID(): string {
@@ -13,13 +13,16 @@ export function createShortName(firstName: string, lastName: string) {
   return firstName[0] + lastName[0];
 }
 
-
-export function filterEmp(data :IEmployee[], searchVal : string): IEmployee[]{
+export function filterEmp(data: IEmployee[], searchVal: string): IEmployee[] {
   return data.filter((elem) => {
     if (searchVal === "") {
       return elem;
-    } else if (elem.firstName.toLowerCase().includes(searchVal.toLowerCase())|| elem.lastName.toLowerCase().includes(searchVal.toLowerCase()) || elem.position.toLowerCase().includes(searchVal.toLowerCase())) {
+    } else if (
+      elem.firstName.toLowerCase().includes(searchVal.toLowerCase()) ||
+      elem.lastName.toLowerCase().includes(searchVal.toLowerCase()) ||
+      elem.position.toLowerCase().includes(searchVal.toLowerCase())
+    ) {
       return elem;
     }
-  })
+  });
 }

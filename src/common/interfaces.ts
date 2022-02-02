@@ -24,30 +24,29 @@ export interface IResponseDataUser {
   password: string;
 }
 
-
 export interface IUserData {
   id: string;
   firstName: string;
   lastName: string;
   email: string;
   password: string;
-  isAdmin : boolean;
+  isAdmin: boolean;
 }
 
-export interface IEmployee{
+export interface IEmployee {
   id: string;
   photo: string;
-  firstName : string;
-  lastName : string;
-  location : string;
+  firstName: string;
+  lastName: string;
+  location: string;
   age: number;
   dateFrom: string;
   email: string;
-  phone : string;
-  freeDays : number;
-  position : string;
-  level: 'junior'|'middle'|'senior';
-  skills : string[];
+  phone: string;
+  freeDays: number;
+  position: string;
+  level: "junior" | "middle" | "senior";
+  skills: string[];
 }
 
 export interface IMainPage {

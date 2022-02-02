@@ -1,13 +1,10 @@
-const initialState: string  = '/';
+const initialState: string = "/";
 
-export const locationReducer = (
-  state = initialState,
-  action: any
-): any => {
+export const locationReducer = (state = initialState, action: any): any => {
   switch (action.type) {
-    case 'SET_LOCATION':
-      return  action.payload;
+    case "SET_LOCATION":
+      return action.payload;
     default:
-      return state
+      return state;
   }
-}
+};

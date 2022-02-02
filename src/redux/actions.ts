@@ -1,4 +1,8 @@
-import { IDataLogIn, IResponseDataUser, IUserData } from "./../common/interfaces";
+import {
+  IDataLogIn,
+  IResponseDataUser,
+  IUserData,
+} from "./../common/interfaces";
 import { Actions, Constants } from "./../common/constants";
 
 import { IStartPage } from "common/interfaces";
@@ -73,7 +77,14 @@ export const ActionSetCurrentUser = (data: IUserData): TypeSetCurrentUser => ({
 
 export const initialStateStartPage: IStartPage = {
   TypeLogon: Constants.SHOW_LOGIN,
-  user: { id: "", firstName: "", lastName: "", email: "", password: "", isAdmin: false },
+  user: {
+    id: "",
+    firstName: "",
+    lastName: "",
+    email: "",
+    password: "",
+    isAdmin: false,
+  },
   isLogin: false,
 };
 
@@ -85,7 +96,10 @@ export type TypesStartPage =
   | TypeLogOut
   | TypeSetCurrentUser;
 
-export const ReducerStart = (state: IStartPage = initialStateStartPage, action: TypesStartPage) => {
+export const ReducerStart = (
+  state: IStartPage = initialStateStartPage,
+  action: TypesStartPage
+) => {
   switch (action.type) {
     case Actions.CHANGE_LOGON_TYPE: {
       return { ...state, TypeLogon: action.payload };

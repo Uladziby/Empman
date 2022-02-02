@@ -15,7 +15,9 @@ import {
 import { Actions } from "common/constants";
 
 export const getUsers = () => {
-  return (dispatch: (arg0: { type: string; payload: AxiosResponse<any> }) => void) => {
+  return (
+    dispatch: (arg0: { type: string; payload: AxiosResponse<any> }) => void
+  ) => {
     getAllUsers().then((users) => {
       dispatch({
         type: Actions.GET_USERS,
@@ -26,7 +28,9 @@ export const getUsers = () => {
 };
 
 export const getDetailEmp = (id: string) => {
-  return (dispatch: (arg0: { type: string; payload: AxiosResponse<any> }) => void) => {
+  return (
+    dispatch: (arg0: { type: string; payload: AxiosResponse<any> }) => void
+  ) => {
     getDataEmp(id).then((user) => {
       setTimeout(() => {
         dispatch({
@@ -49,16 +53,15 @@ export const checkLogInThunks = (data: IDataLogIn) => {
   return (dispatch: any) => {
     checkLogIn(data)
       .then((res) => {
-        setTimeout(() => { 
-          console.log(res)
+        setTimeout(() => {
+          console.log(res);
           if (res?.status === 400) {
             alert("user not exist");
           }
-            dispatch({
-              type: Actions.SET_CURRENT_USER,
-              payload: res!.data,
-            });
-          
+          dispatch({
+            type: Actions.SET_CURRENT_USER,
+            payload: res!.data,
+          });
         }, 2000);
       })
       .then(() => {
@@ -71,9 +74,11 @@ export const checkLogInThunks = (data: IDataLogIn) => {
 };
 
 export const logoutThunks = (data: boolean) => {
-  return (dispatch: (arg0: { type: string; payload: AxiosResponse<boolean> }) => void) => {
+  return (
+    dispatch: (arg0: { type: string; payload: AxiosResponse<boolean> }) => void
+  ) => {
     Logout(data).then((res) => {
-      console.log(res)
+      console.log(res);
       dispatch({
         type: Actions.LOG_OUT,
         payload: res!.data,
@@ -83,7 +88,9 @@ export const logoutThunks = (data: boolean) => {
 };
 
 export const getAllEmpThunks = () => {
-  return (dispatch: (arg0: { type: string; payload: AxiosResponse<any> }) => void) => {
+  return (
+    dispatch: (arg0: { type: string; payload: AxiosResponse<any> }) => void
+  ) => {
     getAllEmployees().then((users) => {
       dispatch({
         type: Actions.GET_ALL_EMP,
@@ -94,7 +101,12 @@ export const getAllEmpThunks = () => {
 };
 
 export const deleteEmpThunks = (id: string) => {
-  return (dispatch: (arg0: { type: string; payload: AxiosResponse<IEmployee[]> }) => void) => {
+  return (
+    dispatch: (arg0: {
+      type: string;
+      payload: AxiosResponse<IEmployee[]>;
+    }) => void
+  ) => {
     deleteEmp(id)
       .then((res) => {
         dispatch({
@@ -107,7 +119,12 @@ export const deleteEmpThunks = (id: string) => {
 };
 
 export const createNewEmployeeThunks = () => {
-  return (dispatch: (arg0: { type: string; payload: AxiosResponse<IEmployee> }) => void) => {
+  return (
+    dispatch: (arg0: {
+      type: string;
+      payload: AxiosResponse<IEmployee>;
+    }) => void
+  ) => {
     createEmp()
       .then((res) => {
         dispatch({
@@ -120,7 +137,12 @@ export const createNewEmployeeThunks = () => {
 };
 
 export const updateDetailEmpThunks = (data: IEmployee, id: string) => {
-  return (dispatch: (arg0: { type: string; payload: AxiosResponse<IEmployee> }) => void) => {
+  return (
+    dispatch: (arg0: {
+      type: string;
+      payload: AxiosResponse<IEmployee>;
+    }) => void
+  ) => {
     updateDetailEmp(data, id)
       .then((res) => {
         console.log(res?.status, res?.data);

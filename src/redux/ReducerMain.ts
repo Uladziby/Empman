@@ -43,7 +43,10 @@ export const initialStateMainPage: IMainPage = {
 export type TypesMainPage = TypeAllEmp | TypeDelEmp | TypeCreateEmp;
 
 //Reducer
-export const ReducerMain = (state: IMainPage = initialStateMainPage, action: TypesMainPage) => {
+export const ReducerMain = (
+  state: IMainPage = initialStateMainPage,
+  action: TypesMainPage
+) => {
   switch (action.type) {
     case Actions.GET_ALL_EMP: {
       return { ...state, Employees: action.payload };
@@ -52,7 +55,7 @@ export const ReducerMain = (state: IMainPage = initialStateMainPage, action: Typ
       return { ...state, Employees: filterDelId(action.payload, state) };
     }
     case Actions.CREATE_EMP: {
-      return { ...state, Employees: [...state.Employees , action.payload] };
+      return { ...state, Employees: [...state.Employees, action.payload] };
     }
     default:
       return state;

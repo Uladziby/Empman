@@ -14,7 +14,7 @@ const emptyUser: IEmployee = {
   photo: "",
   location: "",
   level: "junior",
-  email: ""
+  email: "",
 };
 
 export type TypeDetailEmp = {
@@ -42,7 +42,10 @@ export const initialStateMainPage: IDetailPage = {
 
 export type TypesDetailPage = TypeDetailEmp | TypePatchDetailEmp;
 
-export const ReducerDetail = (state: IDetailPage = initialStateMainPage, action: TypesDetailPage) => {
+export const ReducerDetail = (
+  state: IDetailPage = initialStateMainPage,
+  action: TypesDetailPage
+) => {
   switch (action.type) {
     case Actions.GET_DETAIL_EMP: {
       return { ...state, employee: action.payload };

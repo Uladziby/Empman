@@ -1,4 +1,4 @@
-import { IUserData } from 'common/interfaces';
+import { IUserData } from "common/interfaces";
 export enum Constants {
   SHOW_LOGIN = "SHOW_LOGIN",
   SHOW_SIGNUP = "SHOW_SIGNUP",
@@ -19,7 +19,6 @@ export enum AsideLinkEnum {
   Detail = "/detail",
 }
 
-
 export enum Actions {
   CHANGE_LOGON_TYPE = "CHANGE_LOGON_TYPE",
   CREATE_NEW_USER = "CREATE_NEW_USER",
@@ -36,12 +35,11 @@ export enum Actions {
   SET_CURRENT_USER = "SET_CURRENT_USER",
 }
 
-
-export const emptyUser : IUserData = {
-  id: '',
-  firstName: '',
-  lastName: '',
-  email: '',
-  password: '',
-  isAdmin: false
-}
+export const emptyUser: IUserData = {
+  id: "",
+  firstName: "",
+  lastName: "",
+  email: "",
+  password: "",
+  isAdmin: false,
+};
