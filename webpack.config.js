@@ -33,7 +33,7 @@ module.exports = {
         options: {
           transpileOnly: true,
         },
-        exclude: /build/,
+        exclude: /dist/,
       },
       {
         test: /\.(?:ico|gif|png|jpg|jpeg|svg|webp)$/i,
