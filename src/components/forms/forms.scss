@@ -1,0 +1,26 @@
+.form{
+    padding: 3%;
+    &>.btn{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+    }
+    &>.htmlForm-group{
+        width: 100%;
+        &>input{
+            width: 100%;
+        }
+        &>input:focus{
+            width: 100%;
+            color: #007bff;
+        }
+    }
+    
+
+}
+
+.htmlForm-group{
+    padding-bottom: 1rem;
+}
+

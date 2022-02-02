@@ -1,0 +1,31 @@
+.palyer-card_container{
+display: flex;
+width: 100%;
+justify-content: center;
+padding: 2%;
+}
+
+.player-card__photo{
+    width: 140px;
+    height: 140px;
+    display: flex;
+    align-items: center;
+    border-radius: 50%;
+    background: #60dabf;
+}
+.player-card__photo-img {
+    text-transform: uppercase;
+    display: block;
+    margin: auto;
+    width: fit-content;
+    color: #ffffff;
+    font-size: 3.2rem;
+    font-weight: 700;
+  }
+
+  .detail{
+    display: flex;
+    /* justify-content: center; */
+    flex-direction: column;
+    padding: 5%;
+  }
