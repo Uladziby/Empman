@@ -6,8 +6,8 @@ import {
   IUserData,
 } from "./interfaces";
 
-//const urlBase = "https://empman-uladziby.herokuapp.com";
-const urlBase = "http://localhost:4000";
+const urlBase = "https://empman-uladziby.herokuapp.com";
+//const urlBase = "http://localhost:4000";
 const mainUrl = `${urlBase}/main`;
 const login = `${urlBase}/login`;
 const logout = `${urlBase}/logout`;
