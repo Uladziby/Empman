@@ -23,7 +23,7 @@ const headers = {
   },
 };
 const instAxios = axios.create({
-  withCredentials: true,
+  /* withCredentials: true, */
   baseURL: `${urlBase}`,
   headers: {
     "Access-Control-Allow-Credentials": "true",

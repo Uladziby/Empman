@@ -2,7 +2,6 @@ import "./forms.scss";
 import { useForm } from "react-hook-form";
 import { IUserData } from "common/interfaces";
 import { useDispatch } from "react-redux";
-import { ActionCreateNewUser } from "redux/actions";
 import { checkLogInThunks, createNewUserThunks, getAllEmpThunks } from "redux/thunks";
 import { ActionLoader } from "redux/ReducerLoader";
 import { useHistory } from "react-router-dom";
@@ -17,11 +16,11 @@ export const FormRegister: React.FC = () => {
       <form
         className="form"
         onSubmit={handleSubmit((data :IUserData) => {
-          dispatch(createNewUserThunks(data));
           dispatch(ActionLoader(true));
+          dispatch(createNewUserThunks(data));
           dispatch(checkLogInThunks(data));
+          history.push("/main");
           setTimeout(() => {
-            history.push("/main");
             dispatch(getAllEmpThunks());
             dispatch(ActionLoader(false));
           }, 3000);

@@ -5,7 +5,6 @@ import { checkLogInThunks, getAllEmpThunks } from "redux/thunks";
 import { IDataLogIn, IStore } from "common/interfaces";
 import { ActionLoader } from "redux/ReducerLoader";
 import { useHistory } from "react-router-dom";
-import { ActionSetCurrentUser } from "redux/actions";
 import { useEffect, useState } from "react";
 
 export const FormLogin: React.FC = () => {
