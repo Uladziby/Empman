@@ -4,6 +4,6 @@
 
 ## server - deploy : https://empman-uladziby.herokuapp.com/
 
-### login how administrator :  admin@admin , password : admin 
+### login as administrator :  admin@admin , password : admin 
 
-### login how user : click sign up=> insert your data in fields => click entry
+### login as user : click sign up=> insert your data in fields => click entry => route to main page
