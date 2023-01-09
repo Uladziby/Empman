@@ -1,7 +1,7 @@
 import axios, { AxiosResponse } from "axios";
 import { IDataLogIn, IEmployee, IUserData } from "./interfaces";
 
-const urlBase = "https://empman-uladziby.herokuapp.com";
+const urlBase = "marvelous-zesty-drive.glitch.me";
 /* const urlBase = "http://localhost:4000";
  */ 
 const mainUrl = `${urlBase}/main`;
@@ -24,7 +24,7 @@ const instAxios = axios.create({
   headers: {
     //"Access-Control-Allow-Credentials": "true",
     "Content-Type": "application/json",
-    // "Access-Control-Allow-Origin": "true",
+     "Access-Control-Allow-Origin": "true",
   },
 });
 
