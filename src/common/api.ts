@@ -3,7 +3,7 @@
 import axios, { AxiosResponse } from "axios";
 import { IDataLogIn, IEmployee, IUserData } from "./interfaces";
 
-const urlBase = "http://marvelous-zesty-drive.glitch.me";
+const urlBase = "https://marvelous-zesty-drive.glitch.me";
 /* const urlBase = "http://localhost:4000";
  */
 const mainUrl = `${urlBase}/main`;
