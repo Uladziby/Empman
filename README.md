@@ -2,7 +2,7 @@
 
 ## client - deploy : https://empman-uladziby.netlify.app/
 
-## server - deploy : https://empman-uladziby.herokuapp.com/
+## server - repository : https://github.com/Uladziby/Empman-server/tree/develop
 
 ### login as administrator :  admin@admin , password : admin 
 
